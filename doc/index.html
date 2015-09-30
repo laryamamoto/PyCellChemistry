@@ -1,0 +1,168 @@
+<html>
+
+ <head>
+
+ <META NAME="description" content="PyCellChemistry online reference manual">
+
+  <title>PyCellChemistry 2.0 Online Reference Manual</title>
+
+ </head>
+
+ <body>
+
+<table width="100%">
+<tr>
+  <td><a href="../../../AC-home.html">[top]</a></td>
+  <td><a href="../../index.html">[up]</a></td>
+  <td style="color:grey">[previous]</td>
+  <td style="color:grey">[next]</td>
+</tr>
+</table>
+
+<p>
+<IMG SRC="bu.gif" width="1000" height="2">
+
+
+<H1> 
+PyCellChemistry 2.0 Online Reference Manual
+</H1>
+
+<h3> Basic classes:</h3>
+
+<p>
+Located in the <b>src/artchem/</b> folder, these python modules are not meant to be invoked directly. Instead, they are imported from the modules implementing the chemistries that need them. These modules contain classes that implement the core functionalities of artificial chemistries. So far only well-mixed and compartment-based chemistries are available.
+
+  <ul>
+  <li> <A HREF="artchem/BinaryStrings.html">BinaryStrings.py</A>: routines to manipulate binary strings in the form of arbitrarily long integers. </li>
+
+  <li> <A HREF="artchem/Multiset.html">Multiset.py</A>: a bag of chemicals represented as a multiset of objects; these objects are typically strings, often binary strings. </li>
+
+  <li> <A HREF="artchem/KeyMultiset.html">KeyMultiset.py</A>: a multiset indexed by a given key; the key is usually a substring of the molecule, akin to a binding site, but it can also be a shorter tag that is computed from the information within the molecule. </li>
+
+  <li> <A HREF="artchem/Reaction.html">Reaction.py</A>: explicit representation of chemical reactions using multisets: a reaction is made of an educt multiset, a product multiset, and a rate coefficient k. </li>
+
+  <li> <A HREF="artchem/ReactionParser.html">ReactionParser.py</A> parses chemical reactions in text format, such as: <code>"A + 2 B --> 3 C ,  k=2.5"</code>, and translates them into Reaction objects. </li>
+
+  <li> <A HREF="artchem/ReactionVessel.html">ReactionVessel.py</A>:
+a reaction vessel for well-mixed ACs with a fixed set of molecular species and reactions. Two algorithms are included: WellStirredVessel (for deterministic ODE integration), and GillespieVessel (for stochastic simulations). </li>
+
+  <li> <A HREF="artchem/Cell.html">Cell.py</A>: an implementation of hierarchical compartments that grow and divide. </li>
+
+  </ul>
+
+<h3> Non-spatial AC Examples:</h3>
+
+<p>
+Located in the <b>src/</b> folder, these python modules implement various examples of artificial chemistries found in the literature.
+
+  <ul>
+  <li> <A HREF="examples/Chameleons.html">Chameleons.py</A>: a colored chameleon chemistry, where molecules are chameleons that change color when they meet each other. </li>
+  <li> <A HREF="examples/Dimer.html">Dimer.py</A>: a reversible dimerization reaction, where two monomers combine into a dimer, then the dimer breaks down again into monomers. </li>
+  <li> <A HREF="examples/DimerStoch.html">DimerStoch.py</A>: stochastic implementation of the reversible dimerization example. </li>
+  <li> <A HREF="examples/NumberChem.html">NumberChem.py</A>: a number chemistry in which molecules are integer numbers that decompose each other in reactions, converging to a "soup" of prime numbers.</li>
+  <li> <A HREF="examples/MatrixChem.html">MatrixChem.py</A>: a chemistry where molecules are binary strings that "fold" into 2D matrices that multiply each other
+<a href="../../index.html#Banzhaf1993a">[Banzhaf1993]</a>;
+this is a constructive AC that may result in the formation of closed and self-maintaining molecule sets (organizations,
+<a href="../../index.html#Dittrich2007">[Dittrich2007])</a>.
+</li>
+
+  <li> <A HREF="examples/Logistic.html">Logistic.py</A>: an AC implementation of the logistic equation, with comparison between ODE and SSA.</li>
+  <li> <A HREF="examples/Lotka.html">Lotka.py</A>: an AC implementation of the classical predator-prey Lotka-Volterra system, ODE or SSA. </li>
+
+  <li> <A HREF="examples/Repressilator.html">Repressilator.py</A>: stochastic simulation of the repressilator genetic regulatory network (GRN)
+<a href="../../index.html#Elowitz2000">[Elowitz2000]</a>. </li>
+
+  <li> <A HREF="examples/Evolution.html">Evolution.py</A>: evolutionary dynamics with ACs (not invoked directly, but from the Quasispecies.py and Tournament.py examples). </li>
+  <li> <A HREF="examples/Quasispecies.html">Quasispecies.py</A> stochastic implementation of a quasispecies evolutionary dynamics
+<a href="../../index.html#Eigen1977">[Eigen1977]</a>, on top of Evolution.py. </li>
+
+  <li> <A HREF="examples/Tournament.html">Tournament.py</A>: genetic algorithm with tournament selection implemented as an artificial chemistry, on top of Evolution.py. </li>
+  <li> <A HREF="examples/NKlandscape.html">NKlandscape.py</A>: a simple implementation of Kauffman's NK model of rugged fitness landscapes
+<a href="../../index.html#Kauffman1993">[Kauffman1993]</a>. </li>
+
+  <li> <A HREF="examples/Fraglets.html">Fraglets.py</A>: an interpreter for the Fraglets language 
+<a href="../../index.html#Tschudin2003">[Tschudin2003]</a>.</li>
+
+  <li> <A HREF="examples/NetFraglets.html">NetFraglets.py</A>: networked Fraglets, with CDP example.</li>
+
+  <li> <A HREF="examples/Disperser.html">Disperser.py</A>: an artificial chemistry for load balancing in distributed systems
+  <a href="../../index.html#Meyer2008">[Meyer2009]</a>.</li>
+
+  <li> <A HREF="examples/HighOrderChem.html">HighOrderChem.py</A>:
+a simplified high-order chemistry in which the
+reaction rules are also molecules in a multiset, and are written as
+strings containing a python method call
+(not to be invoked directly, but to be used to build other chemistries on top of it, as illustrated so far by NumberChemHO.py and MolecularTSP.py). </li>
+
+  <li> <A HREF="examples/NumberChemHO.html">NumberChemHO.py</A>: a reimplementation of NumberChem using HighOrderChem.</li>
+
+  <li> <A HREF="examples/MolecularTSP.html">MolecularTSP.py</A>: a reimplementation of the Molecular Travelling Salesman algorithm 
+<a href="../../index.html#Banzhaf1990">[Banzhaf1990]</a>
+using HighOrderChem. </li>
+
+</ul>
+
+<h3> Shell scripts to run the examples: </h3>
+
+<p>
+Located in the <b>src/scripts/</b> folder, these shell scripts (bash) automate the process of invoking the corresponding python programme for the chemistry and plotting the obtained results.
+
+<ul>
+<li><code>chameleons.sh</code>: to run Chameleons.py</li>
+<li><code>dimer.sh</code>: to run Dimer.py</li>
+<li><code>dimerstoch.sh</code>: to run DimerStotch.py</li>
+<li><code>numchem.sh</code>: to run NumberChem.py or NumberChemHO.py</li>
+<li><code>matchem.sh</code>: to run MatrixChem.py</li>
+<li><code>logistic.sh</code>: to run Logistic.py</li>
+<li><code>lotka.sh</code>: to run Lotka.py</li>
+<li><code>repressilator.sh</code>: to run Repressilator.py</li>
+<li><code>quasispec.sh</code>: to run Quasispecies.py</li>
+<li><code>tournament.sh</code>: to run Tournament.py</li>
+<li><code>nk.sh</code>: to run NKlandscape.py</li>
+<li><code>disperser.sh</code>: to run Disperser.py</li>
+<li><code>moltsp.sh</code>: to run MolecularTSP.py</li>
+</ul>
+
+<h3> Spatial AC examples: Reaction-Diffusion</h3>
+
+<p>
+Located in the <b>src/RD/</b> folder, these examples use <a href="http://vpython.org/">VPython</a> to display two-dimensional reaction-diffusion patterns on the screen.
+
+  <ul>
+  <li> <A HREF="RD/GrayScott.html">GrayScott.py</A>:
+  a demonstration of pattern formation in the Gray-Scott reaction-diffusion system </li>
+  <li> <A HREF="RD/ActivatorInhibitor.html">ActivatorInhibitor.py</A>:
+  the activator-inhibitor system by the Gierer and Meinhardt
+  <li> <A HREF="RD/ActivatorSubstrate.html">ActivatorSubstrate.py</A>:
+  the activator-depleted substrate model by Meinhardt
+  <li> <A HREF="RD/DichotomousBranching.html">DichotomousBranching.py</A>:
+  a system that forms dichotomous leaf branching patterns, also by Meinhardt
+  </li>
+  </ul>
+
+<p>
+The RD demos are supported by the following underlying implementation modules:
+
+<ul>
+  <li> <A HREF="RD/ReactionDiffusion.html">ReactionDiffusion.py</A>:
+  extension of 
+  <A HREF="artchem/ReactionVessel.html">ReactionVessel.py</A>
+  for the numerical integration of partial differential equations (PDEs)
+  </li>
+
+  <li>
+  <A HREF="RD/WritePNG.html">WritePNG.py</A>:
+  library of functions to generate PNG files (3rd party code)
+  </li>
+</ul>
+
+<p>
+<IMG SRC="bu.gif" width="1000" height="2">
+
+<br><br>
+
+<font size="2"> 
+Last updated: September 26, 2015, by Lidia Yamamoto</font>
+
+ </body>
+</html>

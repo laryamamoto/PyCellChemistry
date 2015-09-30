@@ -1,0 +1,221 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module MolecularTSP</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom> <br>
+<font color="#ffffff" face="helvetica, arial"> <br><big><big><strong>MolecularTSP</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href="../index.html">PyCellChemistry documentation index</a><br><a href="file:/Users/lidia/main/research/acbook/web/website/ac-home/pycellchem/pycellchem-2.0/src/MolecularTSP.py">/Users/lidia/main/research/acbook/web/website/ac-home/pycellchem/pycellchem-2.0/src/MolecularTSP.py</a></font></td></tr></table>
+    <p><tt>#---------------------------------------------------------------------------<br>
+#<br>
+#  <a href="#MolecularTSP">MolecularTSP</a>.py: a reimplementation of the Molecular TSP algorithm by<br>
+#  [Banzhaf1990] W. Banzhaf, The "molecular" traveling salesman,<br>
+#  Bio. Cybern. 64, 7-14 (1990)<br>
+#<br>
+#  Usage: python <a href="#MolecularTSP">MolecularTSP</a>.py [ ncities ]  # default 10 cities<br>
+#<br>
+#  by Lidia Yamamoto, Belgium, September 2014<br>
+#<br>
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -<br>
+#<br>
+#   Copyright (C) 2015 Lidia A. R. Yamamoto<br>
+#   Contact: <a href="http://www.artificial-chemistries.org/">http://www.artificial-chemistries.org/</a><br>
+#<br>
+#   This file is part of PyCellChemistry.<br>
+#<br>
+#   PyCellChemistry is free software: you can redistribute it and/or<br>
+#   modify it under the terms of the GNU General Public License<br>
+#   version 3, as published by the Free Software Foundation.<br>
+#<br>
+#   PyCellChemistry is distributed in the hope that it will be useful,<br>
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of<br>
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the<br>
+#   GNU General Public License for more details.<br>
+#<br>
+#   You should have received a copy of the GNU General Public License<br>
+#   along with PyCellChemistry, see file LICENSE. If not, see<br>
+#   <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a><br>
+#</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom> <br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>      </tt></td><td> </td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="http://docs.scipy.org/doc/numpy/">numpy</a><br>
+</td><td width="25%" valign=top><a href="https://docs.python.org/library/re.html">re</a><br>
+</td><td width="25%" valign=top><a href="https://docs.python.org/library/sys">sys</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom> <br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>      </tt></td><td> </td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="HighOrderChem.html#HighOrderChem">HighOrderChem.HighOrderChem</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="MolecularTSP.html#MolecularTSP">MolecularTSP</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="MolecularTSP.html#Point">Point</a>
+</font></dt><dt><font face="helvetica, arial"><a href="MolecularTSP.html#TSPgraph">TSPgraph</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom> <br>
+<font color="#000000" face="helvetica, arial"><a name="MolecularTSP">class <strong>MolecularTSP</strong></a>(<a href="HighOrderChem.html#HighOrderChem">HighOrderChem.HighOrderChem</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>   </tt></td><td> </td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="MolecularTSP-__init__"><strong>__init__</strong></a>(self, nc, ring<font color="#909090">=True</font>)</dt><dd><tt>initialize molecular TSP with a graph of cities and a reactor<br>
+with random candidate tours and rules that operate on tours;<br>
+the graph contains 'nc' cities forming a ring (when ring=True),<br>
+or scattered randomly (when ring=False)</tt></dd></dl>
+
+<dl><dt><a name="MolecularTSP-bestMolecule"><strong>bestMolecule</strong></a>(self)</dt><dd><tt>returns the best molecule in the data multiset</tt></dd></dl>
+
+<dl><dt><a name="MolecularTSP-cutMachine"><strong>cutMachine</strong></a>(self, mol)</dt><dd><tt>C-Machine: transposes the segment lying between two cities<br>
+behind a third city<br>
+e.g. 1 2 3 4 5 6 7 ==&gt; 1 4 5 2 3 6 7<br>
+       ^ ^    |         x   |^ ^</tt></dd></dl>
+
+<dl><dt><a name="MolecularTSP-cutOrInvertOperator"><strong>cutOrInvertOperator</strong></a>(self, tour, invert<font color="#909090">=False</font>)</dt><dd><tt>implements the C-Machine operator when invert=False<br>
+implements the I-Machine operator when invert=True</tt></dd></dl>
+
+<dl><dt><a name="MolecularTSP-exchangeMachine"><strong>exchangeMachine</strong></a>(self, mol)</dt><dd><tt>E-Machine implementation:<br>
+invokes the E-Machine operator, evaluates the fitness of<br>
+the new molecule, compares it with the original one, and<br>
+returns the fittest molecule</tt></dd></dl>
+
+<dl><dt><a name="MolecularTSP-exchangeOperator"><strong>exchangeOperator</strong></a>(self, tour)</dt><dd><tt>E-Machine operator:<br>
+chooses two random cities in a tour and inverts their order<br>
+e.g. 1 2 3 4 5 6 7 ==&gt; 1 2 3 6 5 4 7<br>
+           ^   ^             ^   ^</tt></dd></dl>
+
+<dl><dt><a name="MolecularTSP-fitness"><strong>fitness</strong></a>(self, tour)</dt><dd><tt>calculate the fitness of a tour</tt></dd></dl>
+
+<dl><dt><a name="MolecularTSP-fitter"><strong>fitter</strong></a>(self, fit1, fit2)</dt><dd><tt>true if the fitness value fit1 is better than value fit2</tt></dd></dl>
+
+<dl><dt><a name="MolecularTSP-invertMachine"><strong>invertMachine</strong></a>(self, mol)</dt><dd><tt>I-Machine: same as the C-Machine but the segment cut is<br>
+reversed before insertion<br>
+e.g. 1 2 3 4 5 6 7 ==&gt; 1 4 5 3 2 6 7<br>
+       ^ ^    |         x   |^ ^</tt></dd></dl>
+
+<dl><dt><a name="MolecularTSP-newMolecule"><strong>newMolecule</strong></a>(self, fit, tour)</dt><dd><tt>constructs a molecule with syntax:<br>
+fitness [ city1, city2, ... ]</tt></dd></dl>
+
+<dl><dt><a name="MolecularTSP-parseMolecule"><strong>parseMolecule</strong></a>(self, mol)</dt><dd><tt>parses the molecule, returning its fitness and tour components</tt></dd></dl>
+
+<dl><dt><a name="MolecularTSP-randomMolecule"><strong>randomMolecule</strong></a>(self)</dt><dd><tt>create a random candidate molecule (fit, c1, c2, ...)</tt></dd></dl>
+
+<dl><dt><a name="MolecularTSP-randomPair"><strong>randomPair</strong></a>(self, tour)</dt><dd><tt>returns a random pair of positions within a tour</tt></dd></dl>
+
+<dl><dt><a name="MolecularTSP-recombinationMachine"><strong>recombinationMachine</strong></a>(self, mol1, mol2)</dt><dd><tt>R-Machine: recombines 2 tours and selects the 2 fitter tours<br>
+out of the multiset of 4 tours formed by the 2 parents plus the<br>
+2 generated offsprings</tt></dd></dl>
+
+<dl><dt><a name="MolecularTSP-recombinationOperator"><strong>recombinationOperator</strong></a>(self, tour1, tour2)</dt><dd><tt>R-Machine operator: recombines two tours<br>
+example:<br>
+[1 2 3 4 5 6 7], [3 6 1 4 5 2 7] ==&gt;<br>
+ ^                    |-----|<br>
+[1 4 5 2 2 3 4 5 6 7] ==&gt; [1 4 5 2 3 6 7]<br>
+ |-----|</tt></dd></dl>
+
+<dl><dt><a name="MolecularTSP-run"><strong>run</strong></a>(self)</dt><dd><tt>run the Molecular TSP algorithm for up to a maximum number of<br>
+generations, or until a sufficiently optimal solution is<br>
+found;<br>
+produces a set of output files, one for each individual<br>
+in the initial population, and one for each individual in<br>
+the final population</tt></dd></dl>
+
+<dl><dt><a name="MolecularTSP-splitTour"><strong>splitTour</strong></a>(self, tour, p1, p2)</dt><dd><tt>splits the tour in two segments:<br>
+1. the segment starting at position p1, until position p2-1<br>
+2. the segment starting at position p2, until position p1-1<br>
+in a circular way, for example:<br>
+ <br>
+1 2 3 4 5 6 7 ==&gt; [2 3], [4 5 6 7 1]<br>
+  ^   ^<br>
+  p1  p2<br>
+1 2 3 4 5 6 7 ==&gt; [4 5 6 7 1], [2, 3]<br>
+  ^   ^<br>
+  p2  p1<br>
+ <br>
+if the positions p1 and p2 coincide, the first segment is<br>
+equal to the tour, and the second segment is empty</tt></dd></dl>
+
+<dl><dt><a name="MolecularTSP-traceAll"><strong>traceAll</strong></a>(self, gen)</dt><dd><tt>print all molecules in the data multiset</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="HighOrderChem.html#HighOrderChem">HighOrderChem.HighOrderChem</a>:<br>
+<dl><dt><a name="MolecularTSP-is_effective"><strong>is_effective</strong></a>(self, educts, products)</dt><dd><tt>true if the reaction defined by educts --&gt; products is<br>
+effective, that is the product multiset is different from the<br>
+educt multiset</tt></dd></dl>
+
+<dl><dt><a name="MolecularTSP-isrule"><strong>isrule</strong></a>(self, mol)</dt><dd><tt>true if molecule 'mol' contains a reaction rule of the form<br>
+function(args), where function is a python function call<br>
+and args are the parameters for the function</tt></dd></dl>
+
+<dl><dt><a name="MolecularTSP-iterate"><strong>iterate</strong></a>(self)</dt><dd><tt>run one iteration of high-order algorithm: pick a random<br>
+reaction rule, fill its binding sites with as many molecules<br>
+as needed, and fire it.<br>
+returns a triple (r, e, p) where r is the rule that has<br>
+been fired, 'e' is the educt list and 'p' is the product<br>
+list</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom> <br>
+<font color="#000000" face="helvetica, arial"><a name="Point">class <strong>Point</strong></a></font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>   </tt></td><td> </td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Point-__init__"><strong>__init__</strong></a>(self, x, y)</dt><dd><tt>a 2D point with coordinates (x,y)</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom> <br>
+<font color="#000000" face="helvetica, arial"><a name="TSPgraph">class <strong>TSPgraph</strong></a></font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>   </tt></td><td> </td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="TSPgraph-__init__"><strong>__init__</strong></a>(self, nc, ring<font color="#909090">=True</font>)</dt><dd><tt>create a random map containing 'nc' cities;<br>
+if the 'ring' flag is set, puts all the cities around a ring;<br>
+else scatters them randomly on a 2D surface</tt></dd></dl>
+
+<dl><dt><a name="TSPgraph-buildFullMesh"><strong>buildFullMesh</strong></a>(self)</dt><dd><tt>fully-meshed graph with roads from all cities to all others</tt></dd></dl>
+
+<dl><dt><a name="TSPgraph-cityDistance"><strong>cityDistance</strong></a>(self, city1, city2)</dt><dd><tt>Euclidean distance between two cities</tt></dd></dl>
+
+<dl><dt><a name="TSPgraph-createRingTopo"><strong>createRingTopo</strong></a>(self)</dt><dd><tt>ring topology: cities are placed on a ring with radius<br>
+proportional to the total number of cities</tt></dd></dl>
+
+<dl><dt><a name="TSPgraph-createRndTopo"><strong>createRndTopo</strong></a>(self)</dt><dd><tt>random topology: cities placed at random coordinates</tt></dd></dl>
+
+<dl><dt><a name="TSPgraph-distance"><strong>distance</strong></a>(self, p1, p2)</dt><dd><tt>Euclidean distance between two points</tt></dd></dl>
+
+<dl><dt><a name="TSPgraph-occupied"><strong>occupied</strong></a>(self, x, y)</dt><dd><tt>true if point (x,y) is too close to another city</tt></dd></dl>
+
+<dl><dt><a name="TSPgraph-randomTour"><strong>randomTour</strong></a>(self, ns)</dt><dd><tt>walk ns steps randomly on the graph, without going back to the<br>
+same city; returns the tour generated</tt></dd></dl>
+
+<dl><dt><a name="TSPgraph-trace"><strong>trace</strong></a>(self)</dt><dd><tt>print city number and coordinates for plotting</tt></dd></dl>
+
+<dl><dt><a name="TSPgraph-traceTour"><strong>traceTour</strong></a>(self, tour, fname)</dt><dd><tt>prints tour for plotting</tt></dd></dl>
+
+</td></tr></table></td></tr></table>
+<hr>
+<p>
+<font size="2">Generated automatically by 
+<a href="https://docs.python.org/2/library/pydoc.html">pydoc</a>,
+July 10, 2015</font>
+</body></html>

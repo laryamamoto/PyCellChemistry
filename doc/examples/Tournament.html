@@ -1,0 +1,115 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module Tournament</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom> <br>
+<font color="#ffffff" face="helvetica, arial"> <br><big><big><strong>Tournament</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href="../index.html">PyCellChemistry documentation index</a><br><a href="file:/Users/lidia/main/research/acbook/web/website/ac-home/pycellchem/pycellchem-2.0/src/Tournament.py">/Users/lidia/main/research/acbook/web/website/ac-home/pycellchem/pycellchem-2.0/src/Tournament.py</a></font></td></tr></table>
+    <p><tt>#---------------------------------------------------------------------------<br>
+#<br>
+# <a href="#Tournament">Tournament</a>.py: GA with tournament selection in a chemistry, similar<br>
+# to the algorithm presented in the catalytic search papers below,<br>
+# adapted for chapter 7 of the book.<br>
+#<br>
+# References:<br>
+#<br>
+#   Lidia Yamamoto and Wolfgang Banzhaf, Catalytic search in dynamic <br>
+#   environments. Artificial Life XII. MIT Press 2010, pages 277-285.<br>
+#<br>
+#   Lidia Yamamoto, Evaluation of a catalytic search algorithm,<br>
+#   Studies in Computational Intelligence volume 284, Springer 2010,<br>
+#   pages 75-87.<br>
+#<br>
+# by Lidia Yamamoto, Kraainem, Belgium, July 2013<br>
+#<br>
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -<br>
+#<br>
+#   Copyright (C) 2015 Lidia A. R. Yamamoto<br>
+#   Contact: <a href="http://www.artificial-chemistries.org/">http://www.artificial-chemistries.org/</a><br>
+#<br>
+#   This file is part of PyCellChemistry.<br>
+#<br>
+#   PyCellChemistry is free software: you can redistribute it and/or<br>
+#   modify it under the terms of the GNU General Public License<br>
+#   version 3, as published by the Free Software Foundation.<br>
+#<br>
+#   PyCellChemistry is distributed in the hope that it will be useful,<br>
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of<br>
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the<br>
+#   GNU General Public License for more details.<br>
+#<br>
+#   You should have received a copy of the GNU General Public License<br>
+#   along with PyCellChemistry, see file LICENSE. If not, see<br>
+#   <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a><br>
+#</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom> <br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>      </tt></td><td> </td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="../artchem/BinaryStrings.html">artchem.BinaryStrings</a><br>
+</td><td width="25%" valign=top><a href="http://docs.scipy.org/doc/numpy/">numpy</a><br>
+</td><td width="25%" valign=top><a href="https://docs.python.org/library/sys">sys</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom> <br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>      </tt></td><td> </td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="Evolution.html#Evolution">Evolution.Evolution</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="Tournament.html#Tournament">Tournament</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom> <br>
+<font color="#000000" face="helvetica, arial"><a name="Tournament">class <strong>Tournament</strong></a>(<a href="Evolution.html#Evolution">Evolution.Evolution</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>   </tt></td><td> </td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Tournament-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>start the tournament experiment with an intentionally bad<br>
+initial population</tt></dd></dl>
+
+<dl><dt><a name="Tournament-run"><strong>run</strong></a>(self, niter<font color="#909090">=1000</font>)</dt><dd><tt>run tournaments for 'niter' iterations</tt></dd></dl>
+
+<dl><dt><a name="Tournament-tournament1"><strong>tournament1</strong></a>(self, toursize)</dt><dd><tt>tournament competition among individuals, variant 1:<br>
+looser dies, winner reproduces asexually, the child gets mutated<br>
+with a probability</tt></dd></dl>
+
+<dl><dt><a name="Tournament-tournament2"><strong>tournament2</strong></a>(self, toursize)</dt><dd><tt>tournament variant 2: two winners recombine with a probability,<br>
+their children replace two loosers</tt></dd></dl>
+
+<dl><dt><a name="Tournament-tournament3"><strong>tournament3</strong></a>(self, toursize)</dt><dd><tt>tournament variant 3: with crossover and mutation combined</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="Evolution.html#Evolution">Evolution.Evolution</a>:<br>
+<dl><dt><a name="Tournament-avgfitness"><strong>avgfitness</strong></a>(self)</dt><dd><tt>compute the average fitness of the population</tt></dd></dl>
+
+<dl><dt><a name="Tournament-bestworstfit"><strong>bestworstfit</strong></a>(self, mset)</dt><dd><tt>find the best and worst individuals in a given multiset</tt></dd></dl>
+
+<dl><dt><a name="Tournament-fitness"><strong>fitness</strong></a>(self, binstr)</dt><dd><tt>calculate the fitness of an individual (normalized to one)</tt></dd></dl>
+
+<dl><dt><a name="Tournament-optimum"><strong>optimum</strong></a>(self)</dt><dd><tt>produce an optimum individual for the desired fitness function</tt></dd></dl>
+
+<dl><dt><a name="Tournament-randmol"><strong>randmol</strong></a>(self)</dt><dd><tt>generate a random molecule in the form of an N-bit integer</tt></dd></dl>
+
+</td></tr></table></td></tr></table>
+<hr>
+<p>
+<font size="2">Generated automatically by 
+<a href="https://docs.python.org/2/library/pydoc.html">pydoc</a>,
+July 10, 2015</font>
+</body></html>

@@ -1,0 +1,85 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module BinaryStrings</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom> <br>
+<font color="#ffffff" face="helvetica, arial"> <br><big><big><strong>BinaryStrings</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href="../index.html">PyCellChemistry documentation index</a><br><a href="file:/Users/lidia/main/research/acbook/web/website/ac-home/pycellchem/pycellchem-2.0/src/artchem/BinaryStrings.py">/Users/lidia/main/research/acbook/web/website/ac-home/pycellchem/pycellchem-2.0/src/artchem/BinaryStrings.py</a></font></td></tr></table>
+    <p><tt>#---------------------------------------------------------------------------<br>
+#<br>
+# BinaryStrings.py: a module to manipulate binary strings as integers<br>
+#<br>
+# by Lidia Yamamoto, Belgium, July 2013<br>
+#<br>
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -<br>
+#<br>
+#   Copyright (C) 2015 Lidia A. R. Yamamoto<br>
+#   Contact: <a href="http://www.artificial-chemistries.org/">http://www.artificial-chemistries.org/</a><br>
+#<br>
+#   This file is part of PyCellChemistry.<br>
+#<br>
+#   PyCellChemistry is free software: you can redistribute it and/or<br>
+#   modify it under the terms of the GNU General Public License<br>
+#   version 3, as published by the Free Software Foundation.<br>
+#<br>
+#   PyCellChemistry is distributed in the hope that it will be useful,<br>
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of<br>
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the<br>
+#   GNU General Public License for more details.<br>
+#<br>
+#   You should have received a copy of the GNU General Public License<br>
+#   along with PyCellChemistry, see file LICENSE. If not, see<br>
+#   <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a><br>
+#</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom> <br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>      </tt></td><td> </td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="http://docs.scipy.org/doc/numpy/">numpy</a><br>
+</td><td width="25%" valign=top><a href="https://docs.python.org/library/sys">sys</a><br>
+</td><td width="25%" valign=top><a href="https://docs.python.org/library/time">time</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom> <br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>      </tt></td><td> </td>
+<td width="100%"><dl><dt><a name="-count_ones"><strong>count_ones</strong></a>(binstr)</dt><dd><tt>number of ones in a binary string</tt></dd></dl>
+ <dl><dt><a name="-crossover"><strong>crossover</strong></a>(s1, s2, nbits)</dt><dd><tt>crossover between two binary strings s1 and s2 at a random position;<br>
+returns two children c1 and c2</tt></dd></dl>
+ <dl><dt><a name="-dice"><strong>dice</strong></a>(prob)</dt><dd><tt>throw a dice: true if the dice falls within the given probability</tt></dd></dl>
+ <dl><dt><a name="-entropy"><strong>entropy</strong></a>(binstr, nbits)</dt><dd><tt>entropy of a binary string<br>
+CAUTION: for a string of nbits, there are only nbits/2 + 1<br>
+different entropy levels 0 &lt;= entropy &lt;= 1 including 0.0<br>
+(for p0 = 0 or p0 = 1) and 1.0 (for p0=p1=0.5)</tt></dd></dl>
+ <dl><dt><a name="-flipbit"><strong>flipbit</strong></a>(binstr, pos, nbits)</dt><dd><tt>flip a given bit in the string</tt></dd></dl>
+ <dl><dt><a name="-getbitvalue"><strong>getbitvalue</strong></a>(binstr, pos)</dt><dd><tt>get value of the bit at position 'pos' in binary string 'binstr'</tt></dd></dl>
+ <dl><dt><a name="-getsegment"><strong>getsegment</strong></a>(binstr, p0, p1)</dt><dd><tt>get value of segment from p0 to p1 in binary string 'binstr'</tt></dd></dl>
+ <dl><dt><a name="-hamming"><strong>hamming</strong></a>(x, y)</dt><dd><tt>Hamming distance between two integers x and y</tt></dd></dl>
+ <dl><dt><a name="-int2str"><strong>int2str</strong></a>(binstr, nbits)</dt><dd><tt>converts an integer to a string containing the binary number<br>
+in ascii form, without prefix '0b' and filled with leading<br>
+zeros up to nbits</tt></dd></dl>
+ <dl><dt><a name="-mutate1"><strong>mutate1</strong></a>(binstr, nbits)</dt><dd><tt>mutate a random bit in the string</tt></dd></dl>
+ <dl><dt><a name="-mutatep"><strong>mutatep</strong></a>(binstr, nbits, prob)</dt><dd><tt>mutate each bit in the string with a given probability<br>
+caution: this method is computationally much slower than <a href="#-mutate1">mutate1</a>()</tt></dd></dl>
+ <dl><dt><a name="-randbin"><strong>randbin</strong></a>(nbits, p1<font color="#909090">=0.5</font>)</dt><dd><tt>random integer with a given number of bits 'nbits'<br>
+bits are uniformly distributed, with a possible bias:<br>
+p1 = probability of a one<br>
+p0 = 1 - p1 =  probability of a 0</tt></dd></dl>
+ <dl><dt><a name="-randprob"><strong>randprob</strong></a>()</dt><dd><tt>random floating point number between 0 and 1</tt></dd></dl>
+</td></tr></table>
+<hr>
+<p>
+<font size="2">Generated automatically by 
+<a href="https://docs.python.org/2/library/pydoc.html">pydoc</a>,
+July 10, 2015</font>
+</body></html>

@@ -1,0 +1,138 @@
+
+PyCellChemistry: Artificial Chemistry simulations in Python
+===============
+
+by Lidia Yamamoto, Belgium, July 2013
+version 1.0: July 2015
+version 2.0: September 2015
+version 2.1: October 2015: committed to GitHub
+
+Basic system (src/artchem folder):
+============
+
+- Multiset.py: a bag of chemicals represented as a multiset of objects
+
+- KeyMultiset.py: a multiset indexed by a given key; the key can be a
+  substring representing part of the molecule (akin to a binding site)
+  or any value that tags a particular molecule or groups of related
+  molecules, such that it can be moreq uickly located.
+
+- Reaction.py: explicit chemical reactions composed of an educt
+  multiset and a product multiset.
+
+- ReactionParser.py: parser for explicit reactions represented as
+  strings in the format "A + B --> C , k=2"
+
+- ReactionVessel.py: ODE integration and Gillespie SSA implementations
+  for explicit, non-constructive artificial chemistries
+
+- BinaryStrings.py: routines to manipulate binary strings as
+  arbitrarily long integers
+
+- Cell.py: an implementation of hierarchical comopartments akin to P
+  Systems; cells may contain multisets of chemicals and other cells
+  inside.
+
+---------------------------------------------------------------------------
+
+Example applications (src folder):
+====================
+
+- Dimer.py: simple reversible dimerization example (chapter 2)
+
+- Chameleons.py: colored chameleon chemistry (chapter 2)
+
+- NumberChem.py: prime number chemistry (chapter 2)
+
+- MatrixChem.py: Matrix Chemistry (chapter 3)
+
+- Logistic.py: logistic equation (chapter 7), with comparison between
+  ODE and SSA
+
+- Lotka.py: Lotka-Volterra example (chapter 7), ODE or SSA
+
+- Repressilator.py: stochastic simulation of the repressilator GRN
+  (chapter 19)
+
+- Evolution.py: implentation of basic evolution elements, used by
+  Quasispecies.py and Tournament.py
+
+- Quasispecies.py: stochastic implementation of a quasispecies
+  evolutionary dynamics (chapter 7)
+
+- Tournament.py: genetic algorithm with tournament selection
+  implemented as an artificial chemistry
+
+- NKlandscape.py: a simple implementation of Kauffman's NK model of
+  rugged fitness landscapes (chapter 18)
+
+- Fraglets.py: interpreter for the Fraglets language (chapter 16)
+
+- NetFraglets.py: networked Fraglets, with CDP example (chapter 16)
+
+- Disperser.py: an artificial chemistry for load balancing in
+  distributed systems (chapter 17)
+
+- HighOrderChem.py: a simplified high-order chemistry in which the
+  reaction rules are also molecules in a multiset, and are written as
+  strings containing a python method call.
+
+- NumberChemHO.py: a reimplementation of NumberChem using HighOrderChem
+
+- MolecularTSP.py: a reimplementation of the Molecular TSP algorithm
+  (chapter 17) using HighOrderChem
+
+Running:
+-------
+
+python [example.py] > output1.txt 2> output2.txt
+
+depending on the example chosen, the output file(s) will contain
+execution traces or data to be plotted (in tab-separated format).
+
+---------------------------------------------------------------------------
+
+Reaction-diffusion implementation and demos (src/RD folder):
+==================
+
+Reaction-diffusion demos:
+
+- GrayScott.py: a demo of pattern formation in the Gray-Scott system
+
+- ActivatorInhibitor.py: the Gierer & Meinhardt's activator-inhibitor system
+
+- ActivatorSubstrate.py: activator-depleted substrate model by Meinhardt
+
+- DichotomousBranching.py: Dichotomous leaf branching pattern by Meinhardt
+
+Underlying implementation:
+
+- ReactionDiffusion.py: implementation of numerical PDE integration
+
+- WritePNG.py: library of functions to generate PNG files (3rd party code)
+
+Running the reaction-diffusion demos:
+-------
+
+* with VPython (vpython.org):
+
+- simply invoke
+
+  python [demo.py]
+
+- more concretely:
+
+  python GrayScott.py
+
+  python ActivatorInhibitor.py
+
+  python ActivatorSubstrate.py
+
+  python DichotomousBranching.py
+
+* without VPython:
+
+- comment out the rsys.animate(...) line in the corresponding demo
+
+- use rsys.writepng(...) instead, to generate PNG files periodically
+

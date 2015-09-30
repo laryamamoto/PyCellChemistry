@@ -1,0 +1,116 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module NKlandscape</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom> <br>
+<font color="#ffffff" face="helvetica, arial"> <br><big><big><strong>NKlandscape</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href="../index.html">PyCellChemistry documentation index</a><br><a href="file:/Users/lidia/main/research/acbook/web/website/ac-home/pycellchem/pycellchem-2.0/src/NKlandscape.py">/Users/lidia/main/research/acbook/web/website/ac-home/pycellchem/pycellchem-2.0/src/NKlandscape.py</a></font></td></tr></table>
+    <p><tt>#---------------------------------------------------------------------------<br>
+#<br>
+# <a href="#NKlandscape">NKlandscape</a>.py:<br>
+#<br>
+# a simple implementation of Kauffman's NK model of rugged fitness landscapes<br>
+#<br>
+# by Lidia Yamamoto, Kraainem, Belgium, November 2013<br>
+#<br>
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -<br>
+#<br>
+#   Copyright (C) 2015 Lidia A. R. Yamamoto<br>
+#   Contact: <a href="http://www.artificial-chemistries.org/">http://www.artificial-chemistries.org/</a><br>
+#<br>
+#   This file is part of PyCellChemistry.<br>
+#<br>
+#   PyCellChemistry is free software: you can redistribute it and/or<br>
+#   modify it under the terms of the GNU General Public License<br>
+#   version 3, as published by the Free Software Foundation.<br>
+#<br>
+#   PyCellChemistry is distributed in the hope that it will be useful,<br>
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of<br>
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the<br>
+#   GNU General Public License for more details.<br>
+#<br>
+#   You should have received a copy of the GNU General Public License<br>
+#   along with PyCellChemistry, see file LICENSE. If not, see<br>
+#   <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a><br>
+#</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom> <br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>      </tt></td><td> </td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="../artchem/BinaryStrings.html">artchem.BinaryStrings</a><br>
+</td><td width="25%" valign=top><a href="http://docs.scipy.org/doc/numpy/">numpy</a><br>
+</td><td width="25%" valign=top><a href="https://docs.python.org/library/sys">sys</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom> <br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>      </tt></td><td> </td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="NKlandscape.html#NKlandscape">NKlandscape</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom> <br>
+<font color="#000000" face="helvetica, arial"><a name="NKlandscape">class <strong>NKlandscape</strong></a></font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>   </tt></td><td> </td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="NKlandscape-__init__"><strong>__init__</strong></a>(self, n, k)</dt><dd><tt>create an NK landscape with given n and k, where:<br>
+n is the total number of genes, and <br>
+k is the number of epistatic interactions per gene</tt></dd></dl>
+
+<dl><dt><a name="NKlandscape-dist2neighbors"><strong>dist2neighbors</strong></a>(self, genome)</dt><dd><tt>fitness distance between a given genome and all its 1-mutant<br>
+neighbors</tt></dd></dl>
+
+<dl><dt><a name="NKlandscape-fitness"><strong>fitness</strong></a>(self, genome)</dt><dd><tt>compute the fitness value for the given genome: the average of<br>
+the individual fitness values of each gene in the genome</tt></dd></dl>
+
+<dl><dt><a name="NKlandscape-gene_fitness"><strong>gene_fitness</strong></a>(self, pos, genome)</dt><dd><tt>returns the fitness of the gene at position 'pos' in the given<br>
+genome; CAUTION!! uses random epistatic matrix, not scalable!!!</tt></dd></dl>
+
+<dl><dt><a name="NKlandscape-gene_fitness_ALT"><strong>gene_fitness_ALT</strong></a>(self, pos, genome)</dt><dd><tt>returns the fitness of the gene at position 'pos' in the given<br>
+genome, using alternative pre-built fitness matrix and smaller<br>
+matrix of epistatic interactions, different from the original<br>
+method by Kauffman; (doesn't work very well, disabled by default)</tt></dd></dl>
+
+<dl><dt><a name="NKlandscape-mk_epistatic"><strong>mk_epistatic</strong></a>(self)</dt><dd><tt>build matrix of epistatic interactions:<br>
+influence of K other genes on the fitness of each of the N genes<br>
+epi[i,j] = fitness of gene i when the state of K+1 genes<br>
+(gene i itself plus the K other genes that interact with it) is j<br>
+CAUTION!! needs big matrix of size N * 2^(K+1), not scalable!!</tt></dd></dl>
+
+<dl><dt><a name="NKlandscape-mk_epistatic_ALT"><strong>mk_epistatic_ALT</strong></a>(self)</dt><dd><tt>alternative way to build a matrix of epistatic interactions:<br>
+epi[i,j,v] = amount of influence of gene i on gene j when the<br>
+value of gene i is v (this leads to a smaller matrix, but<br>
+doesn't work very well, disabled by default)</tt></dd></dl>
+
+<dl><dt><a name="NKlandscape-mk_fitness_ALT"><strong>mk_fitness_ALT</strong></a>(self)</dt><dd><tt>make a fitness matrix in order to reduce computation load<br>
+(goes with the mk_epistatic_ALT attempt, doesn't work very<br>
+well, disabled by default)</tt></dd></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom> <br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>      </tt></td><td> </td>
+<td width="100%"><dl><dt><a name="-sweepNKdistance"><strong>sweepNKdistance</strong></a>(n)</dt><dd><tt>run the NK model for given N and varying K</tt></dd></dl>
+</td></tr></table>
+<hr>
+<p>
+<font size="2">Generated automatically by 
+<a href="https://docs.python.org/2/library/pydoc.html">pydoc</a>,
+July 10, 2015</font>
+</body></html>

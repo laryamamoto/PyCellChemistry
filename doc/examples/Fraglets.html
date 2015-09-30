@@ -1,0 +1,185 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module Fraglets</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom> <br>
+<font color="#ffffff" face="helvetica, arial"> <br><big><big><strong>Fraglets</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href="../index.html">PyCellChemistry documentation index</a><br><a href="file:/Users/lidia/main/research/acbook/web/website/ac-home/pycellchem/pycellchem-2.0/src/Fraglets.py">/Users/lidia/main/research/acbook/web/website/ac-home/pycellchem/pycellchem-2.0/src/Fraglets.py</a></font></td></tr></table>
+    <p><tt>#---------------------------------------------------------------------------<br>
+#<br>
+# <a href="#Fraglets">Fraglets</a>.py: a python implementation of <a href="#Fraglets">Fraglets</a>, a chemically-inspired<br>
+# programming language for computer networks<br>
+#<br>
+# Reference:<br>
+#<br>
+# C. Tschudin. <a href="#Fraglets">Fraglets</a>: A metabolistic execution model for communication<br>
+# protocols. Proc. 2nd Annual Symposium on Autonomous Intelligent Networks<br>
+# and Systems (AINS), July 2003.<br>
+#<br>
+# python implementation by Lidia Yamamoto, Belgium, October 2013<br>
+#<br>
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -<br>
+#<br>
+#   Copyright (C) 2015 Lidia A. R. Yamamoto<br>
+#   Contact: <a href="http://www.artificial-chemistries.org/">http://www.artificial-chemistries.org/</a><br>
+#<br>
+#   This file is part of PyCellChemistry.<br>
+#<br>
+#   PyCellChemistry is free software: you can redistribute it and/or<br>
+#   modify it under the terms of the GNU General Public License<br>
+#   version 3, as published by the Free Software Foundation.<br>
+#<br>
+#   PyCellChemistry is distributed in the hope that it will be useful,<br>
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of<br>
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the<br>
+#   GNU General Public License for more details.<br>
+#<br>
+#   You should have received a copy of the GNU General Public License<br>
+#   along with PyCellChemistry, see file LICENSE. If not, see<br>
+#   <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a><br>
+#</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom> <br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>      </tt></td><td> </td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="http://docs.scipy.org/doc/numpy/">numpy</a><br>
+</td><td width="25%" valign=top><a href="https://docs.python.org/library/sys">sys</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom> <br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>      </tt></td><td> </td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="Fraglets.html#Fraglets">Fraglets</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom> <br>
+<font color="#000000" face="helvetica, arial"><a name="Fraglets">class <strong>Fraglets</strong></a></font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>   </tt></td><td> </td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Fraglets-__init__"><strong>__init__</strong></a>(self, nid<font color="#909090">=''</font>)</dt><dd><tt>create a <a href="#Fraglets">Fraglets</a> interpreter and reaction vessel with node id<br>
+'nid'</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-add_cnx"><strong>add_cnx</strong></a>(self, dst, addr)</dt><dd><tt>add a link between this vessel and another vessel: 'dst' is the<br>
+tag that identifies the link; 'addr' is the reference to the<br>
+<a href="#Fraglets">Fraglets</a> object corresponding to the destination vessel</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-del_cnx"><strong>del_cnx</strong></a>(self, dst)</dt><dd><tt>delete a link given its tag id 'dst'</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-getmethod"><strong>getmethod</strong></a>(self, mol)</dt><dd><tt>get method that implements the instruction at the head<br>
+(first symbol) of fraglet 'mol'</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-getname"><strong>getname</strong></a>(self, op)</dt><dd><tt>get human-friendly name for an instruction in character-encoded<br>
+format</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-inert"><strong>inert</strong></a>(self)</dt><dd><tt>true if reactor is inert: there are no more reactions to fire</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-inject"><strong>inject</strong></a>(self, mol, mult<font color="#909090">=1</font>)</dt><dd><tt>inject 'mult' copies of fraglet 'mol' in the reactor</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-inject_list"><strong>inject_list</strong></a>(self, mlist)</dt><dd><tt>inject the list of fraglets 'mlist' in the reactor</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-interpret"><strong>interpret</strong></a>(self, fname<font color="#909090">=''</font>)</dt><dd><tt>interpret a file containing fraglet code for a single vessel</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-isbimol"><strong>isbimol</strong></a>(self, mol)</dt><dd><tt>true if fraglet 'mol' starts with a bimolecular reaction rule</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-ismatchp"><strong>ismatchp</strong></a>(self, mol)</dt><dd><tt>true if fraglet 'mol' starts with a matchp instruction</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-ispassive"><strong>ispassive</strong></a>(self, mol)</dt><dd><tt>true if fraglet 'mol' does not start with a reaction rule</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-isunimol"><strong>isunimol</strong></a>(self, mol)</dt><dd><tt>true if fraglet 'mol' starts with a unimolecular reaction rule</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-iterate"><strong>iterate</strong></a>(self)</dt><dd><tt>one iteration of fraglets for single-vessel configuration</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-mol2fraglet"><strong>mol2fraglet</strong></a>(self, mol, mult<font color="#909090">=1</font>)</dt><dd><tt>convert a 'character-encoded' molecule into a human-readable<br>
+fraglet</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-parse"><strong>parse</strong></a>(self, frag)</dt><dd><tt>parse fraglet, converting it to a condensed 'character-encoded'<br>
+string with one character per symbol</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-propensity"><strong>propensity</strong></a>(self)</dt><dd><tt>calculate all propensities of bimolecular reactions</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-r_dup"><strong>r_dup</strong></a>(self, mol)</dt><dd><tt>fire a 'dup' fraglet: duplicate 3rd symbol</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-r_exch"><strong>r_exch</strong></a>(self, mol)</dt><dd><tt>fire an 'exch' fraglet: exchange symbols n. 3 and 4</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-r_fork"><strong>r_fork</strong></a>(self, mol)</dt><dd><tt>fire a 'fork' fraglet that duplicates its tail</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-r_match"><strong>r_match</strong></a>(self, mol1, mol2)</dt><dd><tt>fire a 'match' fraglet: merge 2 fraglets</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-r_matchp"><strong>r_matchp</strong></a>(self, mol1, mol2)</dt><dd><tt>fire a 'matchp' fraglet: merge 2 fraglets, while keeping a<br>
+copy of the original matchp fraglet</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-r_nop"><strong>r_nop</strong></a>(self, mol)</dt><dd><tt>fire a 'nop' fraglet: consume 'nop' symbol</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-r_nul"><strong>r_nul</strong></a>(self, mol)</dt><dd><tt>fire a 'nul' fraglet: delete the fraglet</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-r_pop"><strong>r_pop</strong></a>(self, mol)</dt><dd><tt>fire a 'pop' fraglet: consume 'nop' symbol plus 3rd symbol</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-r_send"><strong>r_send</strong></a>(self, mol)</dt><dd><tt>fire a 'send' fraglet by consuming the header symbols and<br>
+injecting the remaining tail in the destination vessel</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-r_split"><strong>r_split</strong></a>(self, mol)</dt><dd><tt>fire a 'split' fraglet: split at the first occurrence of a '*'<br>
+symbol</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-react"><strong>react</strong></a>(self, w)</dt><dd><tt>perform the selected reaction pointed to by the dice position w<br>
+(typically involked from the hierarchical Gillespie SSA<br>
+implementation in Cell.py)</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-react1"><strong>react1</strong></a>(self, mol)</dt><dd><tt>fire unimolecular reaction involving molecule 'mol'</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-react2"><strong>react2</strong></a>(self, mol1, mol2)</dt><dd><tt>fire bimolecular reaction between mol1 and mol2</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-run"><strong>run</strong></a>(self, niter)</dt><dd><tt>run for 'niter' iterations, or until the reactor is inert</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-run_bimol"><strong>run_bimol</strong></a>(self)</dt><dd><tt>pick one bimolecular reaction using Gillespie's SSA;<br>
+assumes propensities are up to date;<br>
+for single reactor only:<br>
+if more than one reactor, use <a href="#Fraglets-react">react</a>() within Cell instead</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-run_unimol"><strong>run_unimol</strong></a>(self)</dt><dd><tt>run all unimolecular transformations at once</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-set_nodeid"><strong>set_nodeid</strong></a>(self, tag)</dt><dd><tt>assign nodeid 'tag' to this vessel</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-trace"><strong>trace</strong></a>(self)</dt><dd><tt>print all fraglets in the vessel, in human-readable format</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-trace_all_msets"><strong>trace_all_msets</strong></a>(self)</dt><dd><tt>print all fraglets in the vessel, in 'compiled' character-code<br>
+format (for debugging purposes)</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-trace_mlist"><strong>trace_mlist</strong></a>(self, mlist)</dt><dd><tt>print a list of fraglets</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-trace_mol"><strong>trace_mol</strong></a>(self, mol, mult<font color="#909090">=1</font>)</dt><dd><tt>print a given fraglet, in human-readable format</tt></dd></dl>
+
+<dl><dt><a name="Fraglets-trace_reaction"><strong>trace_reaction</strong></a>(self, mlist1, mlist2)</dt><dd><tt>print reaction in the form [frag1], [frag2] --&gt; [frag3]<br>
+(doesn't work for the send reaction)</tt></dd></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom> <br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>      </tt></td><td> </td>
+<td width="100%"><dl><dt><a name="-codegrowth"><strong>codegrowth</strong></a>()</dt><dd><tt>elongating fraglets</tt></dd></dl>
+ <dl><dt><a name="-quine"><strong>quine</strong></a>()</dt><dd><tt>quine: a self-replicating fraglet</tt></dd></dl>
+ <dl><dt><a name="-rndsoup"><strong>rndsoup</strong></a>()</dt><dd><tt>generate a random soup of fraglets and run it for a few iterations</tt></dd></dl>
+ <dl><dt><a name="-test_interpreter"><strong>test_interpreter</strong></a>(filename)</dt><dd><tt>read fraglets program from a file and run it for a few iterations</tt></dd></dl>
+</td></tr></table>
+<hr>
+<p>
+<font size="2">Generated automatically by 
+<a href="https://docs.python.org/2/library/pydoc.html">pydoc</a>,
+July 10, 2015</font>
+</body></html>

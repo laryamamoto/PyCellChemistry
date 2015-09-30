@@ -1,0 +1,60 @@
+
+PLATFORMS
+=========
+
+PyCellChemistry has been tested on python 2.6 and 2.7, on MacOS and
+Linux. The software is designed to be as platform independent as
+possible, so we expect that it should run on other platforms as well,
+although we had no opportunity for extensive testing so far.
+
+REQUIREMENTS
+============
+
+The core of PyCellChemistry depends only on numpy (http://www.numpy.org).
+
+Reaction-diffusion demos in the src/RD folder:
+
+  If you'd like to animate them on the screen, VPython must be installed
+  (http://vpython.org/).
+
+  Alternatively animation can be disabled and PNG files generated instead
+  (see the RD/GrayScott.py demo and the online documentation at
+  www.artificial-chemistries.org for details)
+
+Extra scripts in the src/scripts folder:
+
+  For convenience, some extra shell scripts are provided in the
+  examples/scripts folder. These scripts run the various artificial
+  chemistry examples and plot the results.
+
+  Many of these scripts rely on gnuplot (http://www.gnuplot.info) for
+  plotting, some on python matplotlib (http://matplotlib.org).
+
+  Although convenient, these scripts are not essential to run the
+  various examples in python. Most of the examples generate
+  tab-separated output that can be plotted with your favorite plotting
+  tool (R, Matlab, Excel, ...)
+
+INSTALLATION
+============
+
+1) Download the file pycellchem-2.0.tar.gz or pycellchem-2.0.zip and
+   unpack it at your favorite location.
+
+2) Move to the pycellchem-2.0/src folder and execute the desired
+   example from the command line, such as:
+
+   python Chameleons.py > chameleons.gr
+
+   python MatrixChem.py > matchem.gr
+
+3) Move to the pycellchem-2.0/src/RD folder to run the
+   reaction-diffusion demos:
+
+   python GrayScott.py
+
+   python ActivatorInhibitor.py
+
+see the documentation for more examples and detailed information about
+each example.
+
